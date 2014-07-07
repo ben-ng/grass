@@ -2,6 +2,11 @@
 
 A greedy, streaming lexer written in vanilla Javascript.
 
+[![Build Status](https://travis-ci.org/ben-ng/grass.svg?branch=master)](https://travis-ci.org/ben-ng/grass)
+
+[![browser support](https://ci.testling.com/ben-ng/grass.png)
+](https://ci.testling.com/ben-ng/grass)
+
 ## Features
 
  * Fixed memory usage regardless of input size
