@@ -1,6 +1,6 @@
 {
   "name": "grass",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A greedy, streaming lexer written in vanilla Javascript",
   "main": "lib/index.js",
   "scripts": {
