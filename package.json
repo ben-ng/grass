@@ -1,0 +1,46 @@
+{
+  "name": "grass",
+  "version": "1.0.0",
+  "description": "A greedy, streaming lexer written in vanilla Javascript",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ben-ng/grass"
+  },
+  "keywords": [
+    "lexer",
+    "dfa",
+    "nfa",
+    "automata",
+    "parser"
+  ],
+  "author": "Ben Ng <me@benng.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ben-ng/grass/issues"
+  },
+  "homepage": "https://github.com/ben-ng/grass",
+  "dependencies": {
+    "through": "2.x.x"
+  },
+  "devDependencies": {
+    "finite-automata": "3.x.x",
+    "tape": "2.x.x",
+    "handlebars": "2.x.x"
+  },
+  "testling": {
+    "files": "test/index.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6"
+    ]
+  }
+}

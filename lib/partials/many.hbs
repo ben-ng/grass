@@ -1,0 +1,29 @@
+      {{#if @first}}
+      (function () {
+      {{else}}
+    , (function () {
+      {{/if}}
+        var inputs = []
+
+        {{#each characters}}
+        inputs[{{charCode}}] = function () {
+          currentState = {{targetState}}
+        }
+        {{/each}}
+
+        return function () {
+          {{#if isAcceptedState}}
+          lastAcceptIndex = i
+          lastAcceptState = {{@index}}
+          {{/if}}
+
+          var t = inputs[input.charCodeAt(i)]
+
+          if(t) {
+            t()
+          }
+          else {
+{{>fallbackPartial}}
+          }
+        };
+      }())

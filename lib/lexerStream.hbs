@@ -1,0 +1,79 @@
+
+var currentState = {{initialState}}
+  , i = 0
+  , lastReset = 0
+  , lastAcceptIndex = -1
+  , lastAcceptState = 0
+  , acceptStates = {{acceptStates}}
+  , input = ''
+  , temp
+  , results = []
+  , transitions = [
+
+    {{#each transitions}}
+      {{#if manyTransitions}}
+{{>manyTransitionsPartial}}
+      {{/if}}
+      {{#if severalTransitions}}
+{{>severalTransitionsPartial}}
+      {{/if}}
+      {{#if oneTransition}}
+{{>oneTransitionPartial}}
+      {{/if}}
+      {{#if noTransitions}}
+{{>noTransitionsPartial}}
+      {{/if}}
+    {{/each}}
+
+    ]
+
+function process (data) {
+  i = input.length
+  input = input + data
+  ii = input.length
+
+  if(data != null) {
+    for (;i<ii;++i) {
+      transitions[currentState]()
+    }
+
+    // Remove the processed input
+    input = input.slice(lastReset)
+    lastReset = 0
+    lastAcceptIndex = lastAcceptIndex - lastReset
+
+    temp = results
+    results = []
+    return temp
+  }
+  else {
+    while(input.length) {
+      for (;i<ii;++i) {
+        transitions[currentState]()
+      }
+
+      {{!-- Accept the remaining bit if we are in an accept state --}}
+      if(acceptStates.indexOf(currentState) > -1) {
+        results.push([lastAcceptState, input.slice(lastReset)])
+        break
+      }
+      {{!-- If there was a successful previous match, use it --}}
+      else if (lastAcceptIndex > -1) {
+        results.push([lastAcceptState, input.slice(lastReset, lastAcceptIndex)])
+
+        {{!-- Restart the parser where the last match ended --}}
+        input = input.slice(lastAcceptIndex)
+        i = 0
+        ii = input.length
+        currentState = {{initialState}}
+      }
+      else {
+        break
+      }
+    }
+
+    return results
+  }
+}
+
+return process

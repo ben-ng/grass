@@ -1,0 +1,17 @@
+      {{#if @first}}
+      function () {
+      {{else}}
+    , function () {
+      {{/if}}
+        {{#if isAcceptedState}}
+        lastAcceptIndex = i
+        lastAcceptState = {{@index}}
+        {{/if}}
+
+        if (input.charCodeAt(i) == {{charCode}}) {
+          currentState = {{targetState}}
+        }
+        else {
+{{>fallbackPartial}}
+        }
+      }

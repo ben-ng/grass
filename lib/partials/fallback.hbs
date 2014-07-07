@@ -1,0 +1,24 @@
+          currentState = {{initialState}}
+
+          {{!-- If there was a previous match, use it --}}
+          if(lastAcceptIndex > -1) {
+            results.push([lastAcceptState, input.slice(lastReset, lastAcceptIndex)])
+            {{!-- Restart parsing at the end of that match --}}
+            {{#if isInitialState}}
+            i = lastAcceptIndex
+            {{else}}
+            i = lastAcceptIndex - 1
+            {{/if}}
+            lastReset = i + 1
+          }
+          {{!-- If there was no previous match, restart at current location --}}
+          else {
+            {{#if isInitialState}}
+            lastReset = i + 1
+            {{else}}
+            lastReset = i
+            i = i - 1
+            {{/if}}
+          }
+
+          lastAcceptIndex = -1
