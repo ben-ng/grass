@@ -8,7 +8,9 @@ A greedy, streaming lexer written in vanilla Javascript.
  * Emits both token type and matched text
  * 100% statement and branch coverage
 
-## Usage
+## Streaming Usage
+
+Grass expects an [NFA](https://en.wikipedia.org/wiki/Nondeterministic_finite_automaton) created with [finite-automata](https://www.npmjs.org/package/finite-automata).
 
 ```javascript
 
@@ -36,11 +38,11 @@ fs.createReadStream('input.txt')
 
 ```
 
-## Sync API
+## Sync Usage
 
 ```javascript
 
-grass.sync(ruleA)('reddogredcatbluedog')
+grass.sync(rulea)('reddogredcatbluedog')
 // ==> '[['animalToken', 'reddog'], ['animalToken, 'bluedog']]'
 
 ```
