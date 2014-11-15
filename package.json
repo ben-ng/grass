@@ -24,12 +24,12 @@
   },
   "homepage": "https://github.com/ben-ng/grass",
   "dependencies": {
-    "through": "2.x.x"
+    "through": "2.x.x",
+    "handlebars": "2.x.x"
   },
   "devDependencies": {
     "finite-automata": "3.x.x",
-    "tape": "2.x.x",
-    "handlebars": "2.x.x"
+    "tape": "2.x.x"
   },
   "testling": {
     "files": "test/index.js",
